@@ -40,8 +40,8 @@ if st.button("Predict Average Temperature", type="primary"):
     SELECT 
         EXTRACT(MONTH FROM ts.date) as month,
         AVG(ts.value) as avg_temp
-    FROM WEATHER__ENVIRONMENT.CYBERSYN.NOAA_WEATHER_METRICS_TIMESERIES ts
-    JOIN WEATHER__ENVIRONMENT.CYBERSYN.NOAA_WEATHER_STATION_INDEX idx 
+    FROM SNOWFLAKE_PUBLIC_DATA_FREE.PUBLIC_DATA_FREE.NOAA_WEATHER_METRICS_TIMESERIES ts
+    JOIN SNOWFLAKE_PUBLIC_DATA_FREE.PUBLIC_DATA_FREE.NOAA_WEATHER_STATION_INDEX idx 
         ON ts.noaa_weather_station_id = idx.noaa_weather_station_id
     WHERE ts.variable_name = 'Average Temperature'
         AND idx.zip_name = '{zip_code}'
